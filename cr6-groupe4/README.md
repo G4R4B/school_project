@@ -21,8 +21,7 @@ make -C rsa
 1-2-3. Paul Vie  
 4. Tony Ly Soan  
 5-6. Yanis Lacenne / Paul Vie  
-7. Paul Vie  
-8-9. Louka Chenal / Avon FitzGerald
+7-8-9. Paul Vie
 
 ## Q1
 Fichiers:
