@@ -1,0 +1,6 @@
+# ignore build files
+_build/
+_build/.lock
+_build/log
+_opam/
+.vscode/
