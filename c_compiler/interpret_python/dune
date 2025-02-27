@@ -1,0 +1,13 @@
+(env (dev (flags :standard -warn-error -27-32-66-33)))
+
+(ocamllex
+ (modules lexer))
+(menhir
+ (modules parser))
+(executable
+ (name ptipython2json)
+ (promote (until-clean))
+ (modules lexer parser ast tojson ptipython2json)
+ (libraries yojson unix)
+ (flags ())
+)

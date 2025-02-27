@@ -1,0 +1,932 @@
+[
+    {
+        "type": "data_section",
+        "data": []
+    },
+    {
+        "type": "rodata_section",
+        "data": [
+            {
+                "type": "string",
+                "value": "Swapping %p and %p\n"
+            },
+            {
+                "type": "string",
+                "value": "Swapping %d and %d\n"
+            },
+            {
+                "type": "string",
+                "value": "Addresses: %p and %p\n"
+            },
+            {
+                "type": "string",
+                "value": "After swap: "
+            },
+            {
+                "type": "string",
+                "value": "%d "
+            },
+            {
+                "type": "string",
+                "value": "\n"
+            },
+            {
+                "type": "string",
+                "value": "Tableau original: "
+            },
+            {
+                "type": "string",
+                "value": "Tableau tri\u00e9: "
+            }
+        ]
+    },
+    {
+        "type": "function_section",
+        "data": [
+            {
+                "type": "function",
+                "name": "swap",
+                "return_type": "void"
+            },
+            {
+                "type": "function",
+                "name": "loopedBubbleSort",
+                "return_type": "void"
+            },
+            {
+                "type": "function",
+                "name": "printArray",
+                "return_type": "void"
+            },
+            {
+                "type": "function",
+                "name": "main",
+                "return_type": "int"
+            }
+        ]
+    },
+    {
+        "type": "text",
+        "data": [
+            {
+                "type": "function",
+                "name": "swap",
+                "args": {
+                    "a": {
+                        "type": "var",
+                        "name": "a",
+                        "var_type": {
+                            "type": "pointer",
+                            "of": "int"
+                        },
+                        "stack_index": 8
+                    },
+                    "b": {
+                        "type": "var",
+                        "name": "b",
+                        "var_type": {
+                            "type": "pointer",
+                            "of": "int"
+                        },
+                        "stack_index": 16
+                    }
+                },
+                "local_vars": {
+                    "temp": {
+                        "type": "local_var",
+                        "name": "temp",
+                        "var_type": "int",
+                        "stack_index": 24
+                    }
+                },
+                "stack_size": 32,
+                "body": [
+                    {
+                        "type": "call",
+                        "name": "printf",
+                        "args": [
+                            {
+                                "type": "rodata",
+                                "at": 0,
+                                "len": 19
+                            },
+                            {
+                                "type": "var",
+                                "name": "a",
+                                "var_type": {
+                                    "type": "pointer",
+                                    "of": "int"
+                                },
+                                "stack_index": 8
+                            },
+                            {
+                                "type": "var",
+                                "name": "b",
+                                "var_type": {
+                                    "type": "pointer",
+                                    "of": "int"
+                                },
+                                "stack_index": 16
+                            }
+                        ]
+                    },
+                    {
+                        "type": "varset",
+                        "var_type": "int",
+                        "name": "temp",
+                        "value": {
+                            "type": "unop",
+                            "op": "*",
+                            "expr": {
+                                "type": "var",
+                                "name": "a",
+                                "var_type": {
+                                    "type": "pointer",
+                                    "of": "int"
+                                },
+                                "stack_index": 8
+                            }
+                        },
+                        "stack_index": 24
+                    },
+                    {
+                        "type": "assign_deref",
+                        "where": {
+                            "type": "var",
+                            "name": "a",
+                            "var_type": {
+                                "type": "pointer",
+                                "of": "int"
+                            },
+                            "stack_index": 8
+                        },
+                        "value": {
+                            "type": "unop",
+                            "op": "*",
+                            "expr": {
+                                "type": "var",
+                                "name": "b",
+                                "var_type": {
+                                    "type": "pointer",
+                                    "of": "int"
+                                },
+                                "stack_index": 16
+                            }
+                        }
+                    },
+                    {
+                        "type": "assign_deref",
+                        "where": {
+                            "type": "var",
+                            "name": "b",
+                            "var_type": {
+                                "type": "pointer",
+                                "of": "int"
+                            },
+                            "stack_index": 16
+                        },
+                        "value": {
+                            "type": "local_var",
+                            "name": "temp",
+                            "var_type": "int",
+                            "stack_index": 24
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "function",
+                "name": "loopedBubbleSort",
+                "args": {
+                    "arr": {
+                        "type": "var",
+                        "name": "arr",
+                        "var_type": {
+                            "type": "pointer",
+                            "of": {
+                                "type": "pointer",
+                                "of": "int"
+                            }
+                        },
+                        "stack_index": 8
+                    },
+                    "n": {
+                        "type": "var",
+                        "name": "n",
+                        "var_type": "int",
+                        "stack_index": 16
+                    }
+                },
+                "local_vars": {
+                    "i": {
+                        "type": "local_var",
+                        "name": "i",
+                        "var_type": "int",
+                        "stack_index": 24
+                    },
+                    "j": {
+                        "type": "local_var",
+                        "name": "j",
+                        "var_type": "int",
+                        "stack_index": 32
+                    }
+                },
+                "stack_size": 40,
+                "body": [
+                    {
+                        "type": "for",
+                        "init": {
+                            "type": "varset",
+                            "var_type": "int",
+                            "name": "i",
+                            "value": {
+                                "type": "const",
+                                "value": {
+                                    "type": "int",
+                                    "value": 0
+                                }
+                            },
+                            "stack_index": 24
+                        },
+                        "cond": {
+                            "type": "binop",
+                            "op": "<",
+                            "lhs": {
+                                "type": "local_var",
+                                "name": "i",
+                                "var_type": "int",
+                                "stack_index": 24
+                            },
+                            "rhs": {
+                                "type": "var",
+                                "name": "n",
+                                "var_type": "int",
+                                "stack_index": 16
+                            },
+                            "pos": {
+                                "start_line": 14,
+                                "start_char": 20,
+                                "end_line": 14,
+                                "end_char": 25
+                            }
+                        },
+                        "inc": {
+                            "type": "unop",
+                            "op": "++post",
+                            "expr": {
+                                "type": "local_var",
+                                "name": "i",
+                                "var_type": "int",
+                                "stack_index": 24
+                            }
+                        },
+                        "body": {
+                            "type": "block",
+                            "body": [
+                                {
+                                    "type": "for",
+                                    "init": {
+                                        "type": "varset",
+                                        "var_type": "int",
+                                        "name": "j",
+                                        "value": {
+                                            "type": "const",
+                                            "value": {
+                                                "type": "int",
+                                                "value": 0
+                                            }
+                                        },
+                                        "stack_index": 32
+                                    },
+                                    "cond": {
+                                        "type": "binop",
+                                        "op": "<",
+                                        "lhs": {
+                                            "type": "local_var",
+                                            "name": "j",
+                                            "var_type": "int",
+                                            "stack_index": 32
+                                        },
+                                        "rhs": {
+                                            "type": "var",
+                                            "name": "n",
+                                            "var_type": "int",
+                                            "stack_index": 16
+                                        },
+                                        "pos": {
+                                            "start_line": 15,
+                                            "start_char": 24,
+                                            "end_line": 15,
+                                            "end_char": 29
+                                        }
+                                    },
+                                    "inc": {
+                                        "type": "unop",
+                                        "op": "++post",
+                                        "expr": {
+                                            "type": "local_var",
+                                            "name": "j",
+                                            "var_type": "int",
+                                            "stack_index": 32
+                                        }
+                                    },
+                                    "body": {
+                                        "type": "block",
+                                        "body": [
+                                            {
+                                                "type": "if",
+                                                "cond": {
+                                                    "type": "binop",
+                                                    "op": ">",
+                                                    "lhs": {
+                                                        "type": "array_get",
+                                                        "name": "arr",
+                                                        "index": {
+                                                            "type": "local_var",
+                                                            "name": "j",
+                                                            "var_type": "int",
+                                                            "stack_index": 32
+                                                        },
+                                                        "stack_index": 8
+                                                    },
+                                                    "rhs": {
+                                                        "type": "array_get",
+                                                        "name": "arr",
+                                                        "index": {
+                                                            "type": "local_var",
+                                                            "name": "i",
+                                                            "var_type": "int",
+                                                            "stack_index": 24
+                                                        },
+                                                        "stack_index": 8
+                                                    },
+                                                    "pos": {
+                                                        "start_line": 16,
+                                                        "start_char": 16,
+                                                        "end_line": 16,
+                                                        "end_char": 31
+                                                    }
+                                                },
+                                                "then": {
+                                                    "type": "block",
+                                                    "body": [
+                                                        {
+                                                            "type": "call",
+                                                            "name": "printf",
+                                                            "args": [
+                                                                {
+                                                                    "type": "rodata",
+                                                                    "at": 1,
+                                                                    "len": 19
+                                                                },
+                                                                {
+                                                                    "type": "array_get",
+                                                                    "name": "arr",
+                                                                    "index": {
+                                                                        "type": "local_var",
+                                                                        "name": "j",
+                                                                        "var_type": "int",
+                                                                        "stack_index": 32
+                                                                    },
+                                                                    "stack_index": 8
+                                                                },
+                                                                {
+                                                                    "type": "array_get",
+                                                                    "name": "arr",
+                                                                    "index": {
+                                                                        "type": "local_var",
+                                                                        "name": "i",
+                                                                        "var_type": "int",
+                                                                        "stack_index": 24
+                                                                    },
+                                                                    "stack_index": 8
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "call",
+                                                            "name": "printf",
+                                                            "args": [
+                                                                {
+                                                                    "type": "rodata",
+                                                                    "at": 2,
+                                                                    "len": 21
+                                                                },
+                                                                {
+                                                                    "type": "binop",
+                                                                    "op": "+",
+                                                                    "lhs": {
+                                                                        "type": "var",
+                                                                        "name": "arr",
+                                                                        "var_type": {
+                                                                            "type": "pointer",
+                                                                            "of": {
+                                                                                "type": "pointer",
+                                                                                "of": "int"
+                                                                            }
+                                                                        },
+                                                                        "stack_index": 8
+                                                                    },
+                                                                    "rhs": {
+                                                                        "type": "local_var",
+                                                                        "name": "j",
+                                                                        "var_type": "int",
+                                                                        "stack_index": 32
+                                                                    },
+                                                                    "pos": {
+                                                                        "start_line": 18,
+                                                                        "start_char": 49,
+                                                                        "end_line": 18,
+                                                                        "end_char": 56
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "binop",
+                                                                    "op": "+",
+                                                                    "lhs": {
+                                                                        "type": "var",
+                                                                        "name": "arr",
+                                                                        "var_type": {
+                                                                            "type": "pointer",
+                                                                            "of": {
+                                                                                "type": "pointer",
+                                                                                "of": "int"
+                                                                            }
+                                                                        },
+                                                                        "stack_index": 8
+                                                                    },
+                                                                    "rhs": {
+                                                                        "type": "local_var",
+                                                                        "name": "i",
+                                                                        "var_type": "int",
+                                                                        "stack_index": 24
+                                                                    },
+                                                                    "pos": {
+                                                                        "start_line": 18,
+                                                                        "start_char": 58,
+                                                                        "end_line": 18,
+                                                                        "end_char": 65
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "call",
+                                                            "name": "swap",
+                                                            "args": [
+                                                                {
+                                                                    "type": "unop",
+                                                                    "op": "&",
+                                                                    "expr": {
+                                                                        "type": "array_get",
+                                                                        "name": "arr",
+                                                                        "index": {
+                                                                            "type": "local_var",
+                                                                            "name": "j",
+                                                                            "var_type": "int",
+                                                                            "stack_index": 32
+                                                                        },
+                                                                        "stack_index": 8
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "type": "unop",
+                                                                    "op": "&",
+                                                                    "expr": {
+                                                                        "type": "array_get",
+                                                                        "name": "arr",
+                                                                        "index": {
+                                                                            "type": "local_var",
+                                                                            "name": "i",
+                                                                            "var_type": "int",
+                                                                            "stack_index": 24
+                                                                        },
+                                                                        "stack_index": 8
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "call",
+                                                            "name": "printf",
+                                                            "args": [
+                                                                {
+                                                                    "type": "rodata",
+                                                                    "at": 3,
+                                                                    "len": 12
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "call",
+                                                            "name": "printArray",
+                                                            "args": [
+                                                                {
+                                                                    "type": "var",
+                                                                    "name": "arr",
+                                                                    "var_type": {
+                                                                        "type": "pointer",
+                                                                        "of": {
+                                                                            "type": "pointer",
+                                                                            "of": "int"
+                                                                        }
+                                                                    },
+                                                                    "stack_index": 8
+                                                                },
+                                                                {
+                                                                    "type": "var",
+                                                                    "name": "n",
+                                                                    "var_type": "int",
+                                                                    "stack_index": 16
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "function",
+                "name": "printArray",
+                "args": {
+                    "arr": {
+                        "type": "var",
+                        "name": "arr",
+                        "var_type": {
+                            "type": "pointer",
+                            "of": {
+                                "type": "pointer",
+                                "of": "int"
+                            }
+                        },
+                        "stack_index": 8
+                    },
+                    "n": {
+                        "type": "var",
+                        "name": "n",
+                        "var_type": "int",
+                        "stack_index": 16
+                    }
+                },
+                "local_vars": {
+                    "i": {
+                        "type": "local_var",
+                        "name": "i",
+                        "var_type": "int",
+                        "stack_index": 24
+                    }
+                },
+                "stack_size": 32,
+                "body": [
+                    {
+                        "type": "for",
+                        "init": {
+                            "type": "varset",
+                            "var_type": "int",
+                            "name": "i",
+                            "value": {
+                                "type": "const",
+                                "value": {
+                                    "type": "int",
+                                    "value": 0
+                                }
+                            },
+                            "stack_index": 24
+                        },
+                        "cond": {
+                            "type": "binop",
+                            "op": "<",
+                            "lhs": {
+                                "type": "local_var",
+                                "name": "i",
+                                "var_type": "int",
+                                "stack_index": 24
+                            },
+                            "rhs": {
+                                "type": "var",
+                                "name": "n",
+                                "var_type": "int",
+                                "stack_index": 16
+                            },
+                            "pos": {
+                                "start_line": 29,
+                                "start_char": 20,
+                                "end_line": 29,
+                                "end_char": 25
+                            }
+                        },
+                        "inc": {
+                            "type": "unop",
+                            "op": "++post",
+                            "expr": {
+                                "type": "local_var",
+                                "name": "i",
+                                "var_type": "int",
+                                "stack_index": 24
+                            }
+                        },
+                        "body": {
+                            "type": "block",
+                            "body": [
+                                {
+                                    "type": "call",
+                                    "name": "printf",
+                                    "args": [
+                                        {
+                                            "type": "rodata",
+                                            "at": 4,
+                                            "len": 3
+                                        },
+                                        {
+                                            "type": "array_get",
+                                            "name": "arr",
+                                            "index": {
+                                                "type": "local_var",
+                                                "name": "i",
+                                                "var_type": "int",
+                                                "stack_index": 24
+                                            },
+                                            "stack_index": 8
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "call",
+                        "name": "printf",
+                        "args": [
+                            {
+                                "type": "rodata",
+                                "at": 5,
+                                "len": 1
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "function",
+                "name": "main",
+                "args": {},
+                "local_vars": {
+                    "arr": {
+                        "type": "local_var",
+                        "name": "arr",
+                        "var_type": {
+                            "type": "array",
+                            "len": {
+                                "type": "const",
+                                "value": {
+                                    "type": "int",
+                                    "value": 5
+                                }
+                            },
+                            "of": "int"
+                        },
+                        "stack_index": 40
+                    },
+                    "n": {
+                        "type": "local_var",
+                        "name": "n",
+                        "var_type": "int",
+                        "stack_index": 48
+                    }
+                },
+                "stack_size": 56,
+                "body": [
+                    {
+                        "type": "array",
+                        "name": "arr",
+                        "var_type": {
+                            "type": "array",
+                            "of": "int"
+                        },
+                        "value": {
+                            "type": "array",
+                            "len": {
+                                "type": "const",
+                                "value": {
+                                    "type": "int",
+                                    "value": 5
+                                }
+                            },
+                            "Values": [
+                                {
+                                    "type": "const",
+                                    "value": {
+                                        "type": "int",
+                                        "value": 5
+                                    }
+                                },
+                                {
+                                    "type": "const",
+                                    "value": {
+                                        "type": "int",
+                                        "value": 3
+                                    }
+                                },
+                                {
+                                    "type": "const",
+                                    "value": {
+                                        "type": "int",
+                                        "value": 8
+                                    }
+                                },
+                                {
+                                    "type": "const",
+                                    "value": {
+                                        "type": "int",
+                                        "value": 6
+                                    }
+                                },
+                                {
+                                    "type": "const",
+                                    "value": {
+                                        "type": "int",
+                                        "value": 2
+                                    }
+                                }
+                            ]
+                        },
+                        "stack_index": 40
+                    },
+                    {
+                        "type": "varset",
+                        "var_type": "int",
+                        "name": "n",
+                        "value": {
+                            "type": "binop",
+                            "op": "/",
+                            "lhs": {
+                                "type": "sizeof",
+                                "value": {
+                                    "type": "local_var",
+                                    "name": "arr",
+                                    "var_type": {
+                                        "type": "array",
+                                        "len": {
+                                            "type": "const",
+                                            "value": {
+                                                "type": "int",
+                                                "value": 5
+                                            }
+                                        },
+                                        "of": "int"
+                                    },
+                                    "stack_index": 40
+                                }
+                            },
+                            "rhs": {
+                                "type": "sizeof",
+                                "value": {
+                                    "type": "array_get",
+                                    "name": "arr",
+                                    "index": {
+                                        "type": "const",
+                                        "value": {
+                                            "type": "int",
+                                            "value": 0
+                                        }
+                                    },
+                                    "stack_index": 40
+                                }
+                            },
+                            "pos": {
+                                "start_line": 38,
+                                "start_char": 12,
+                                "end_line": 38,
+                                "end_char": 40
+                            }
+                        },
+                        "stack_index": 48
+                    },
+                    {
+                        "type": "call",
+                        "name": "printf",
+                        "args": [
+                            {
+                                "type": "rodata",
+                                "at": 6,
+                                "len": 18
+                            }
+                        ]
+                    },
+                    {
+                        "type": "call",
+                        "name": "printArray",
+                        "args": [
+                            {
+                                "type": "local_var",
+                                "name": "arr",
+                                "var_type": {
+                                    "type": "array",
+                                    "len": {
+                                        "type": "const",
+                                        "value": {
+                                            "type": "int",
+                                            "value": 5
+                                        }
+                                    },
+                                    "of": "int"
+                                },
+                                "stack_index": 40
+                            },
+                            {
+                                "type": "local_var",
+                                "name": "n",
+                                "var_type": "int",
+                                "stack_index": 48
+                            }
+                        ]
+                    },
+                    {
+                        "type": "call",
+                        "name": "loopedBubbleSort",
+                        "args": [
+                            {
+                                "type": "local_var",
+                                "name": "arr",
+                                "var_type": {
+                                    "type": "array",
+                                    "len": {
+                                        "type": "const",
+                                        "value": {
+                                            "type": "int",
+                                            "value": 5
+                                        }
+                                    },
+                                    "of": "int"
+                                },
+                                "stack_index": 40
+                            },
+                            {
+                                "type": "local_var",
+                                "name": "n",
+                                "var_type": "int",
+                                "stack_index": 48
+                            }
+                        ]
+                    },
+                    {
+                        "type": "call",
+                        "name": "printf",
+                        "args": [
+                            {
+                                "type": "rodata",
+                                "at": 7,
+                                "len": 14
+                            }
+                        ]
+                    },
+                    {
+                        "type": "call",
+                        "name": "printArray",
+                        "args": [
+                            {
+                                "type": "local_var",
+                                "name": "arr",
+                                "var_type": {
+                                    "type": "array",
+                                    "len": {
+                                        "type": "const",
+                                        "value": {
+                                            "type": "int",
+                                            "value": 5
+                                        }
+                                    },
+                                    "of": "int"
+                                },
+                                "stack_index": 40
+                            },
+                            {
+                                "type": "local_var",
+                                "name": "n",
+                                "var_type": "int",
+                                "stack_index": 48
+                            }
+                        ]
+                    },
+                    {
+                        "type": "return",
+                        "value": {
+                            "type": "const",
+                            "value": {
+                                "type": "int",
+                                "value": 0
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
